@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Maison Auraum — Haute Parfumerie Walkthrough</title>
+  <meta name="description" content="Immerse in the nocturnal luxury of Maison Auraum. A seamless architectural walkthrough from the dawn harvests of Grasse to the monumental flacon of Nocturne Solstice." />
+  
+  <!-- Luxury Editorial Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       1. ROOT DESIGN TOKENS & RESET
+       ------------------------------------------------------------- */
+    :root, .sw-root {
+      /* Brand Palette */
+      --sw-bg: #0B0B0E;         /* Obsidian Night */
+      --sw-ink: #F5EFEB;        /* Frosted Crystal White */
+      --sw-ink-soft: #A39D94;   /* Muted Taupe / Sand */
+      --sw-accent: #D4AF37;     /* Champagne Gold */
+      --sw-amber: #C58B4A;      /* Cognac Amber */
+      --sw-cypress: #1C2921;    /* Velvet Cypress */
+      --sw-crystal: #EAE6DF;    /* Frosted Crystal */
+
+      /* Typography */
+      --sw-font-display: 'Cinzel', Didot, 'Playfair Display', Georgia, serif;
+      --sw-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--sw-bg);
+      color: var(--sw-ink);
+      font-family: var(--sw-font-body);
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    /* -------------------------------------------------------------
+       2. FULL-VIEWPORT STAGE & VIDEO CENTERING
+       ------------------------------------------------------------- */
+    .sw-stage, .sw-sky, .sw-copylayer {
+      width: 100%;
+      max-width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .sw-scene__video, .sw-scene__still {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 46%;
+    }
+
+    /* Subtle luxury vignetting */
+    .sw-copylayer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: min(58vw, 780px);
+      background: linear-gradient(90deg, 
+        rgba(11, 11, 14, 0.95) 0%, 
+        rgba(11, 11, 14, 0.82) 34%, 
+        rgba(11, 11, 14, 0.35) 65%, 
+        transparent 100%) !important;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* -------------------------------------------------------------
+       3. TOPBAR & LUXURY BRAND MARK
+       ------------------------------------------------------------- */
+    .sw-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100vw;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: clamp(12px, 2vw, 24px) clamp(16px, 4vw, 56px);
+      padding-top: calc(clamp(12px, 2vw, 24px) + env(safe-area-inset-top));
+      padding-left: calc(clamp(16px, 4vw, 56px) + env(safe-area-inset-left));
+      padding-right: calc(clamp(16px, 4vw, 56px) + env(safe-area-inset-right));
+      pointer-events: none;
+    }
+
+    .sw-brand {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .sw-brand__mark {
+      width: 22px;
+      height: 26px;
+      border-radius: 6px 6px 9px 9px;
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #996515 100%) !important;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4) !important;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .sw-brand__name {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: clamp(0.92rem, 1.4vw, 1.08rem) !important;
+      font-weight: 700;
+      font-family: var(--sw-font-display);
+      background: linear-gradient(135deg, #FFFFFF 0%, #EAE6DF 60%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+
+    .sw-nav {
+      pointer-events: auto;
+      display: flex;
+      gap: 4px;
+      padding: 5px;
+      background: rgba(11, 11, 14, 0.65) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      border: 1px solid rgba(212, 175, 55, 0.25) !important;
+      border-radius: 999px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .sw-nav__item {
+      font-family: var(--sw-font-body);
+      font-size: clamp(0.72rem, 0.9vw, 0.8rem) !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--sw-ink-soft) !important;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      white-space: nowrap;
+    }
+
+    .sw-nav__item:hover { color: #FFF !important; }
+    .sw-nav__item.is-active {
+      color: #0B0B0E !important;
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%) !important;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+    }
+
+    .topbar-actions {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sw-topcta {
+      pointer-events: auto;
+      text-decoration: none;
+      background: linear-gradient(135deg, #D4AF37 0%, #C58B4A 100%) !important;
+      color: #0B0B0E !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: clamp(0.72rem, 1vw, 0.82rem) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s;
+    }
+    .sw-topcta:hover { transform: translateY(-1px); }
+
+    /* -------------------------------------------------------------
+       4. FLUID TYPOGRAPHY & SCENE COPY
+       ------------------------------------------------------------- */
+    .sw-copy {
+      position: absolute;
+      left: clamp(20px, 4.5vw, 64px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(44vw, 480px);
+      max-width: calc(100vw - 40px);
+      opacity: 0;
+      will-change: opacity, transform;
+      pointer-events: none;
+      z-index: 25;
+      padding: 0;
+    }
+
+    .sw-copy__num {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: clamp(0.7rem, 0.9vw, 0.78rem);
+      letter-spacing: 0.14em;
+      color: var(--sw-ink-soft);
+      display: block;
+    }
+
+    .sw-copy__eyebrow {
+      display: block;
+      margin-top: clamp(8px, 1.5vh, 16px);
+      font-family: var(--sw-font-display);
+      font-weight: 700;
+      font-size: clamp(0.68rem, 1vw, 0.78rem) !important;
+      letter-spacing: 0.24em !important;
+      text-transform: uppercase;
+      color: var(--sw-accent) !important;
+      line-height: 1.3;
+    }
+
+    .sw-copy__title {
+      font-family: var(--sw-font-display);
+      font-weight: 700;
+      color: var(--sw-ink);
+      font-size: clamp(1.65rem, 3.8vw, 3.2rem) !important;
+      line-height: 1.08;
+      margin: clamp(8px, 1.2vh, 14px) 0 0;
+      letter-spacing: -0.015em;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    .sw-copy__body {
+      margin-top: clamp(10px, 1.5vh, 18px);
+      /* Requirement: keep body text at least 15px on phones */
+      font-size: clamp(15px, 1.3vw, 1.12rem) !important;
+      line-height: 1.55;
+      color: #E2DDD5 !important;
+      max-width: 44ch;
+      word-wrap: break-word;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+      font-weight: 400;
+    }
+
+    /* Tag Pills with Glass Luxury Borders */
+    .sw-copy__tags {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: clamp(14px, 2vh, 22px) 0 0;
+      padding: 0;
+    }
+
+    .sw-copy__tags li {
+      /* Requirement: keep tag text at least 12px on phones */
+      font-size: clamp(12px, 0.9vw, 13.5px) !important;
+      font-weight: 600;
+      color: #F0ECE4 !important;
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: rgba(18, 18, 24, 0.72) !important;
+      backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(212, 175, 55, 0.32) !important;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* High-Jewelry Grade CTA Buttons */
+    .sw-copy__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: clamp(16px, 2.2vh, 26px);
+      pointer-events: auto;
+    }
+
+    .sw-btn {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(0.78rem, 1vw, 0.88rem);
+      padding: 11px 22px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .sw-btn--primary {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C58B4A 100%) !important;
+      color: #0B0B0E !important;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35), 0 0 1px rgba(255, 255, 255, 0.5) inset !important;
+      border: none !important;
+    }
+    .sw-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+    }
+
+    .sw-btn--ghost {
+      background: rgba(11, 11, 14, 0.6) !important;
+      backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+      color: #F5EFEB !important;
+    }
+    .sw-btn--ghost:hover {
+      border-color: #D4AF37 !important;
+      color: #D4AF37 !important;
+      transform: translateY(-2px);
+    }
+
+    /* -------------------------------------------------------------
+       5. INTERACTIVE CONTROLS (AUTO TOUR & AMBIENT SOUND)
+       ------------------------------------------------------------- */
+    .topbar-actions {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ma-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ma-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      min-height: 38px;
+      border-radius: 999px;
+      background: rgba(15, 15, 20, 0.72);
+      backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      color: #EAE6DF;
+      font-family: var(--sw-font-body);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .ma-btn:hover {
+      color: #FFF;
+      border-color: rgba(212, 175, 55, 0.65);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .ma-btn.is-active {
+      border-color: var(--sw-accent);
+      background: rgba(28, 24, 18, 0.9);
+      color: #F5EFEB;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    }
+
+    .ma-btn svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    .ma-btn .pulse-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sw-accent);
+      display: inline-block;
+      animation: ma-pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes ma-pulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 8px var(--sw-accent); }
+    }
+
+    /* Route indicator */
+    .sw-route {
+      position: fixed;
+      right: clamp(14px, 2.4vw, 30px);
+      top: 50%;
+      z-index: 40;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 16px 8px;
+      padding-right: calc(clamp(14px, 2.4vw, 30px) + env(safe-area-inset-right));
+    }
+
+    /* Scroll hint */
+    .sw-hint {
+      position: fixed;
+      left: 50%;
+      bottom: calc(22px + env(safe-area-inset-bottom));
+      z-index: 30;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sw-ink-soft);
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    /* -------------------------------------------------------------
+       6. RESPONSIVE BREAKPOINTS (PHONES, TABLETS & ROTATION)
+       ------------------------------------------------------------- */
+    
+    /* Mobile / Small Tablets (<= 860px) in Portrait */
+    @media (max-width: 860px) {
+      .sw-nav { display: none !important; }
+
+      .sw-topbar {
+        padding: 12px 16px;
+        padding-top: calc(10px + env(safe-area-inset-top));
+        padding-left: calc(16px + env(safe-area-inset-left));
+        padding-right: calc(16px + env(safe-area-inset-right));
+      }
+
+      /* Relocate controls into the top bar right actions so they NEVER collide with bottom copy */
+      .ma-controls {
+        position: static;
+        padding: 0;
+        gap: 6px;
+      }
+
+      .ma-btn {
+        padding: 7px 11px;
+        min-height: 36px;
+        font-size: 0.72rem;
+        gap: 5px;
+      }
+
+      .ma-btn .btn-text {
+        display: none; /* Icon-only on mobile for zero-overflow guarantee */
+      }
+
+      .sw-topcta {
+        padding: 7px 14px;
+        font-size: 0.72rem !important;
+      }
+
+      /* Enhanced contrast backdrop on mobile portrait */
+      .sw-copylayer::before {
+        width: 100% !important;
+        height: 70% !important;
+        top: auto !important;
+        bottom: 0 !important;
+        background: linear-gradient(0deg, 
+          rgba(11, 11, 14, 0.98) 0%, 
+          rgba(11, 11, 14, 0.88) 45%, 
+          rgba(11, 11, 14, 0.45) 75%, 
+          transparent 100%) !important;
+      }
+
+      /* Copy anchored cleanly above home indicator */
+      .sw-copy {
+        left: calc(16px + env(safe-area-inset-left)) !important;
+        right: calc(16px + env(safe-area-inset-right)) !important;
+        width: auto !important;
+        max-width: 580px !important;
+        top: auto !important;
+        bottom: calc(clamp(20px, 4vh, 36px) + env(safe-area-inset-bottom)) !important;
+        transform: none !important;
+      }
+
+      .sw-copy__title {
+        font-size: clamp(1.45rem, 5.8vw, 2.2rem) !important;
+        line-height: 1.1;
+      }
+
+      .sw-copy__body {
+        font-size: clamp(15px, 3.8vw, 17px) !important;
+        line-height: 1.48;
+        max-width: 100%;
+      }
+
+      .sw-copy__tags li {
+        font-size: clamp(12px, 2.8vw, 13.5px) !important;
+        padding: 4px 10px;
+      }
+
+      .sw-btn {
+        padding: 10px 18px;
+        font-size: 0.8rem;
+        min-height: 42px;
+      }
+
+      /* Slim route dots on mobile */
+      .sw-route {
+        right: calc(6px + env(safe-area-inset-right));
+        gap: 14px;
+      }
+      .sw-route__label { display: none !important; }
+
+      .sw-hint {
+        display: none !important; /* Hide hint on mobile to keep bottom completely clean */
+      }
+    }
+
+    /* Landscape Phones & Short Viewports (height <= 500px, e.g. 844x390) */
+    @media (orientation: landscape) and (max-height: 500px) {
+      .sw-nav { display: none !important; }
+
+      .sw-topbar {
+        padding: 8px 16px;
+        padding-top: calc(6px + env(safe-area-inset-top));
+        padding-left: calc(16px + env(safe-area-inset-left));
+        padding-right: calc(16px + env(safe-area-inset-right));
+      }
+
+      .sw-brand__mark { width: 18px; height: 22px; }
+      .sw-brand__name { font-size: 0.85rem !important; }
+
+      .ma-controls {
+        position: static;
+        padding: 0;
+        gap: 6px;
+      }
+
+      .ma-btn {
+        padding: 5px 9px;
+        min-height: 32px;
+        font-size: 0.68rem;
+      }
+
+      .ma-btn .btn-text { display: none; }
+
+      .sw-topcta {
+        padding: 6px 12px;
+        font-size: 0.68rem !important;
+      }
+
+      /* Landscape split-screen: left 54% dark vignette, right 46% camera view */
+      .sw-copylayer::before {
+        width: 58vw !important;
+        height: 100% !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        background: linear-gradient(90deg, 
+          rgba(11, 11, 14, 0.96) 0%, 
+          rgba(11, 11, 14, 0.85) 45%, 
+          rgba(11, 11, 14, 0.3) 78%, 
+          transparent 100%) !important;
+      }
+
+      .sw-copy {
+        left: calc(16px + env(safe-area-inset-left)) !important;
+        right: auto !important;
+        top: 53% !important;
+        bottom: auto !important;
+        transform: translateY(-50%) !important;
+        width: min(50vw, 420px) !important;
+      }
+
+      .sw-copy__num { font-size: 0.65rem; }
+      .sw-copy__eyebrow {
+        margin-top: 4px;
+        font-size: 0.65rem !important;
+      }
+
+      .sw-copy__title {
+        font-size: clamp(1.15rem, 4vh, 1.45rem) !important;
+        margin-top: 4px;
+      }
+
+      .sw-copy__body {
+        font-size: 15px !important; /* Requirement: at least 15px */
+        line-height: 1.35;
+        margin-top: 6px;
+      }
+
+      .sw-copy__tags {
+        margin-top: 6px;
+        gap: 5px;
+      }
+
+      .sw-copy__tags li {
+        font-size: 12px !important; /* Requirement: at least 12px */
+        padding: 3px 8px;
+      }
+
+      .sw-copy__cta {
+        margin-top: 8px;
+        gap: 8px;
+      }
+
+      .sw-btn {
+        padding: 6px 14px;
+        font-size: 0.74rem;
+        min-height: 34px;
+      }
+
+      .sw-route {
+        right: calc(4px + env(safe-area-inset-right));
+        gap: 10px;
+        padding: 8px 4px;
+      }
+
+      .sw-hint { display: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sw-hint i::after { animation: none; }
+      .sw-pt { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <!-- Audio Element (Gentle looping atmospheric soundtrack) -->
+  <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+
+  <!-- Interactive Controls: Docked inside Topbar Actions on Mobile, Floating on Desktop -->
+  <div id="controls-container" class="ma-controls">
+    <button id="tour-toggle" class="ma-btn" aria-label="Toggle Auto Tour">
+      <span id="tour-icon">
+        <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>
+      </span>
+      <span id="tour-text" class="btn-text">Auto Tour</span>
+      <span id="tour-pulse" class="pulse-indicator" style="display:none;"></span>
+    </button>
+
+    <button id="sound-toggle" class="ma-btn" aria-label="Toggle Ambient Audio">
+      <span id="sound-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span id="sound-text" class="btn-text">Sound Off</span>
+    </button>
+  </div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountLetsScroll(document.getElementById('world'), {
+      brand: { name: 'Maison Auraum', href: '#top' },
+      cta: { label: 'Reserve Edition', href: '#hero' },
+      hint: 'scroll to enter the sanctuary',
+      diveScroll: 1.5,
+      connScroll: 0.9,
+      // Seam dissolve width in viewport heights (vh).
+      // Line 79 of scrub-engine.js: const CROSSFADE = (config.crossfade != null) ? config.crossfade : 0.12;
+      crossfade: 0.28,
+      atmosphere: true,
+      nav: true,
+      sections: [
+        {
+          id: 'botanicals',
+          label: 'Grasse Harvest',
+          still: 'still_0_botanicals.webp',
+          clip: 'leg_0.mp4',
+          accent: '#D4AF37',
+          scroll: 1.6,
+          linger: 0.35,
+          eyebrow: 'ORIGINE & RÉCOLTE',
+          title: 'Dawn in the Fields of Grasse',
+          body: 'Hand-gathered at first light when the blossoms hold their purest nocturnal nectar.',
+          tags: ['Night Jasmine', 'Damask Rose', 'Dawn Harvest']
+        },
+        {
+          id: 'extraction',
+          label: 'Distillation',
+          still: 'still_1_extraction.webp',
+          clip: 'leg_1.mp4',
+          accent: '#C58B4A',
+          scroll: 1.6,
+          linger: 0.35,
+          eyebrow: "L'EXTRACTION FLORALE",
+          title: 'The Sacred Slow Distillation',
+          body: 'Transmuted drop by drop under gentle steam into dense, unadulterated perfume absolute.',
+          tags: ['Steam Alembic', 'Pure Absolute', 'Master Alchemist']
+        },
+        {
+          id: 'flacon',
+          label: 'Flacon Atelier',
+          still: 'still_2_flacon.webp',
+          clip: 'leg_2.mp4',
+          accent: '#EAE6DF',
+          scroll: 1.6,
+          linger: 0.35,
+          eyebrow: 'LE FLACON SCULPTÉ',
+          title: 'Fluted Crystal Architecture',
+          body: 'Each weighty vessel is individually blown, cold-cut, and hand-polished like a rare gem.',
+          tags: ['Hand-Cut Crystal', 'Gilded Seal', 'Artisanal Craft']
+        },
+        {
+          id: 'hero',
+          label: 'Nocturne Solstice',
+          still: 'still_3_hero.webp',
+          clip: 'leg_3.mp4',
+          accent: '#D4AF37',
+          scroll: 1.8,
+          linger: 0.45,
+          eyebrow: "L'EXTRAIT DE PARFUM",
+          title: 'Maison Auraum: Nocturne Solstice',
+          body: 'A nocturnal signature of rare midnight jasmine, aged ambergris, and velvet cedarwood.',
+          tags: ['Extrait de Parfum', 'Limited Edition', '50ml Flacon'],
+          cta: {
+            primary: { label: 'Reserve Your Flacon', href: '#order' },
+            secondary: { label: 'Explore Notes', href: '#botanicals' }
+          }
+        }
+      ],
+      connectors: []
+    });
+
+    /* =========================================================================
+       DOM ADJUSTMENT: RESPONSIVE CONTROLS PLACEMENT
+       ========================================================================= */
+    const controlsContainer = document.getElementById('controls-container');
+    const topbar = document.querySelector('.sw-topbar');
+
+    // Create a container inside topbar for mobile actions
+    const topbarActions = document.createElement('div');
+    topbarActions.className = 'topbar-actions';
+    const topCta = document.querySelector('.sw-topcta');
+    if (topbar && topCta && controlsContainer) {
+      topbar.appendChild(topbarActions);
+      topbarActions.appendChild(controlsContainer);
+      topbarActions.appendChild(topCta);
+    }
+
+    /* =========================================================================
+       1. AMBIENT SOUNDTRACK CONTROLLER
+       ========================================================================= */
+    const bgMusic = document.getElementById('bg-music');
+    const soundToggle = document.getElementById('sound-toggle');
+    const soundIcon = document.getElementById('sound-icon');
+    const soundText = document.getElementById('sound-text');
+    let isSoundOn = false;
+
+    // Set gentle ambient volume
+    bgMusic.volume = 0.35;
+
+    const soundMutedSvg = `
+      <svg viewBox="0 0 24 24">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>`;
+
+    const soundActiveSvg = `
+      <svg viewBox="0 0 24 24">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M19 5a9.5 9.5 0 0 1 0 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>`;
+
+    soundToggle.addEventListener('click', () => {
+      if (!isSoundOn) {
+        bgMusic.play().then(() => {
+          isSoundOn = true;
+          soundToggle.classList.add('is-active');
+          soundIcon.innerHTML = soundActiveSvg;
+          soundText.textContent = 'Sound On';
+        }).catch(err => {
+          console.warn('Audio play prevented:', err);
+        });
+      } else {
+        bgMusic.pause();
+        isSoundOn = false;
+        soundToggle.classList.remove('is-active');
+        soundIcon.innerHTML = soundMutedSvg;
+        soundText.textContent = 'Sound Off';
+      }
+    });
+
+    /* =========================================================================
+       2. AUTO TOUR & TAKE CONTROL CONTROLLER
+       ========================================================================= */
+    const tourToggle = document.getElementById('tour-toggle');
+    const tourIcon = document.getElementById('tour-icon');
+    const tourText = document.getElementById('tour-text');
+    const tourPulse = document.getElementById('tour-pulse');
+
+    let isTourRunning = false;
+    let tourRafId = null;
+    let lastTime = 0;
+    let userInterrupted = false;
+
+    const playSvg = `<svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>`;
+    const pauseSvg = `<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
+
+    const SCROLL_SPEED_PPS = 115;
+
+    function getMaxScroll() {
+      return (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+    }
+
+    function updateTourUi(running) {
+      if (running) {
+        tourToggle.classList.add('is-active');
+        tourIcon.innerHTML = pauseSvg;
+        tourText.textContent = 'Pause Tour';
+        tourPulse.style.display = 'inline-block';
+      } else {
+        tourToggle.classList.remove('is-active');
+        tourIcon.innerHTML = playSvg;
+        tourText.textContent = 'Auto Tour';
+        tourPulse.style.display = 'none';
+      }
+    }
+
+    function stepTour(timestamp) {
+      if (!isTourRunning) return;
+      if (!lastTime) lastTime = timestamp;
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      const maxScroll = getMaxScroll();
+      const currentY = window.scrollY || window.pageYOffset;
+
+      if (currentY >= maxScroll - 4) {
+        // Reached the final hero scene with CTA
+        stopTour(false);
+        return;
+      }
+
+      const step = SCROLL_SPEED_PPS * dt;
+      window.scrollBy(0, step);
+      tourRafId = requestAnimationFrame(stepTour);
+    }
+
+    function startTour() {
+      const maxScroll = getMaxScroll();
+      if ((window.scrollY || window.pageYOffset) >= maxScroll - 10) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+      isTourRunning = true;
+      lastTime = 0;
+      updateTourUi(true);
+      tourRafId = requestAnimationFrame(stepTour);
+    }
+
+    function stopTour(byUserInteraction = false) {
+      isTourRunning = false;
+      if (tourRafId) {
+        cancelAnimationFrame(tourRafId);
+        tourRafId = null;
+      }
+      if (byUserInteraction) {
+        userInterrupted = true;
+      }
+      updateTourUi(false);
+    }
+
+    tourToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isTourRunning) {
+        stopTour(false);
+      } else {
+        userInterrupted = false;
+        startTour();
+      }
+    });
+
+    function onUserTakeControl(e) {
+      if (!isTourRunning) return;
+      if (e.target && e.target.closest && (e.target.closest('#tour-toggle') || e.target.closest('#sound-toggle'))) {
+        return;
+      }
+      stopTour(true);
+    }
+
+    window.addEventListener('wheel', onUserTakeControl, { passive: true });
+    window.addEventListener('touchstart', onUserTakeControl, { passive: true });
+    window.addEventListener('touchmove', onUserTakeControl, { passive: true });
+    window.addEventListener('keydown', (e) => {
+      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space', 'Home', 'End', 'KeyW', 'KeyS'];
+      if (scrollKeys.includes(e.code) || scrollKeys.includes(e.key)) {
+        onUserTakeControl(e);
+      }
+    });
+    window.addEventListener('mousedown', (e) => {
+      if (e.clientX >= window.innerWidth - 20) {
+        onUserTakeControl(e);
+      } else if (!e.target.closest('#tour-toggle') && !e.target.closest('#sound-toggle')) {
+        onUserTakeControl(e);
+      }
+    });
+
+    // Adapt tour after rotation
+    window.addEventListener('orientationchange', () => {
+      if (isTourRunning) {
+        lastTime = 0;
+      }
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      setTimeout(() => {
+        if (!userInterrupted && !isTourRunning && (window.scrollY || window.pageYOffset) < 10) {
+          startTour();
+        }
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
